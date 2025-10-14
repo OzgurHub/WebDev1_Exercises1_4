@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>J's Gallery</title>
+  <meta name="description" content="A responsive gallery with images and video." />
+  <link rel="icon" href="data:," />
+  
+<meta property="og:type" content="website">
+<meta property="og:title" content="Course Exercises — Web Dev 1">
+<meta property="og:description" content="Semantic markup, CSS styling, layouts, and accessibility.">
+<meta name="theme-color" content="#0b72ff">
+
+  <link rel="stylesheet" href="styles.min.css" />
+
+  <link rel="manifest" href="manifest.json" />
+</head>
+<body>
+  <header class="masthead container">
+    <h1 class="display">J's Gallery</h1>
+    <nav aria-label="Main" class="cluster">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#" aria-current="page">Gallery</a>
+    </nav>
+  </header>
+
+  <main class="container flow">
+    
+<!-- Student -->
+<div class="student-info" role="note" aria-label="Student information">
+  <strong>Ozgur Serin</strong> · Web Dev 1 · Bath Spa University
+</div>
+
+    <section class="intro grid-two">
+      <div class="flow">
+        <p>Lorem ipsum odor amet, consectetur adipiscing elit. Praesent mollis adipiscing per id libero libero. Tempus pretium netus molestie scelerisque facilisis tristique volutpat ultricies.</p>
+        <p>Lectus ultrices nibh lobortis tempus facilisis sit conubia taciti. Non torquent amet nibh elit ante fermentum praesent cras.</p>
+      </div>
+      <figure class="elevated">
+        <img src="COW.jpg" alt="Highland cow on a rocky shore" loading="lazy" decoding="async" width="300" height="300" srcset="COW.jpg 1x, COW.jpg 2x" sizes="(max-width: 720px) 100vw, 50vw">
+      </figure>
+    </section>
+
+    <section class="gallery" aria-label="Media grid">
+      <figure class="tile">
+        <video src="video.mp4" controls preload="metadata"></video>
+        <figcaption>Falling Leaves</figcaption>
+      </figure>
+      <figure class="tile"><img src="img4598.jpg" alt="Foggy railway platform at night" loading="lazy" decoding="async" width="2048" height="2048" srcset="img4598.jpg 1x, img4598.jpg 2x" sizes="(max-width: 720px) 100vw, 50vw"></figure>
+      <figure class="tile"><img src="img4532.jpg" alt="Vintage camera close-up" loading="lazy" decoding="async" width="2014" height="2014" srcset="img4532.jpg 1x, img4532.jpg 2x" sizes="(max-width: 720px) 100vw, 50vw"></figure>
+      <figure class="tile"><img src="photo_2018_02_01.jpg" alt="Snowy mountains behind pine trees" loading="lazy" decoding="async" width="2048" height="1024" srcset="photo_2018_02_01.jpg 1x, photo_2018_02_01.jpg 2x" sizes="(max-width: 720px) 100vw, 50vw"></figure>
+      <figure class="tile"><img src="ValleyPhoto.jpg" alt="Rolling hill landscape" loading="lazy" decoding="async" width="600" height="600" srcset="ValleyPhoto.jpg 1x, ValleyPhoto.jpg 2x" sizes="(max-width: 720px) 100vw, 50vw"></figure>
+      <figure class="tile"><img src="johns car jpg.jpg" alt="Old car with snow near a concrete building" loading="lazy" decoding="async" width="2048" height="2048" srcset="johns car jpg.jpg 1x, johns car jpg.jpg 2x" sizes="(max-width: 720px) 100vw, 50vw"></figure>
+    </section>
+  </main>
+
+<script>
+(() => {
+  const key = "theme-pref";
+  const root = document.documentElement;
+  const btn = document.querySelector('.theme-toggle');
+  const set = (mode) => {
+    root.dataset.theme = mode;
+    try { localStorage.setItem(key, mode); } catch {}
+    if (btn) btn.setAttribute('aria-pressed', mode === 'dark');
+  };
+  let pref = 'light';
+  try { pref = localStorage.getItem(key) || pref; } catch {}
+  // Respect system if no pref stored
+  if (!localStorage.getItem(key) && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    pref = 'dark';
+  }
+  set(pref);
+  if (btn) {
+    btn.addEventListener('click', () => set(root.dataset.theme === 'dark' ? 'light' : 'dark'));
+  }
+})();
+</script>
+
+<button class="theme-toggle" type="button" aria-pressed="false" aria-label="Toggle theme">
+  <span class="theme-toggle__label">Theme</span>
+</button>
+
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').catch(()=>{});
+  });
+}
+</script>
+
+<script defer src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+
+:root{
+  --green:#2fa442;
+  --page:#f8fafc;
+  --ink:#0f172a;
+  --muted:#475569;
+  --surface:#ffffff;
+  --radius:18px;
+}
+@media (prefers-color-scheme: dark){
+  :root{--page:#0b0b0c;--ink:#e5e7eb;--muted:#94a3b8;--surface:#101214}
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--page);color:var(--ink);font:16px/1.7 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,sans-serif}
+.container{max-width:900px;margin-inline:auto;padding:1rem}
+.flow>*+*{margin-top:1rem}
+.center{text-align:center}
+.green{color:var(--green)}
+.display{font-weight:900;font-size:clamp(2.8rem,6vw,5rem);line-height:1.05;margin:0}
+.kicker{font-size:clamp(1.4rem,3.5vw,2.4rem);margin:0}
+.section-title{font-size:clamp(2.2rem,4.5vw,3.2rem);margin:1.5rem 0 .5rem}
+.sheet{background:var(--surface);border:1px solid rgba(0,0,0,.08);border-radius:var(--radius);padding:clamp(1rem,2.5vw,2rem);box-shadow:0 10px 30px rgba(0,0,0,.06)}
+.copy p{margin:0}
+.callout{background:rgba(47,164,66,.08);border:2px solid var(--green);border-radius:14px;padding:1rem}
+.callout h3{margin:.25rem 0;font-size:1.6rem}
+.student-info{background:rgba(0,0,0,.04);border:1px solid rgba(0,0,0,.08);padding:.5rem .75rem;border-radius:10px;margin-bottom:.75rem}
+
+
+/* === Pro+ Enhancements === */
+:root { --touch: 44px }
+:root[data-theme="dark"] { color-scheme: dark; }
+:root[data-theme="light"] { color-scheme: light; }
+:focus-visible { outline: 3px solid var(--brand, #0b72ff); outline-offset: 2px; }
+a, button { min-height: var(--touch); min-width: var(--touch); }
+.theme-toggle { position: fixed; right: 1rem; bottom: 1rem; z-index: 10; border: 2px solid currentColor; background: transparent; padding: .4rem .7rem; border-radius: 999px; cursor: pointer; }
+.theme-toggle__label { font-weight: 600; }
+@media print {
+  header, nav, .theme-toggle, .btn { display: none !important; }
+  .student-info { border: none; background: none; padding: 0; }
+  body { background: #fff !important; color: #000 !important; }
+}

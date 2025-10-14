@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Machine Gym — Our Story</title>
+  <meta name="description" content="How Machine Gym blends fitness and AI." />
+  <link rel="icon" href="data:," />
+  
+<meta property="og:type" content="website">
+<meta property="og:title" content="Course Exercises — Web Dev 1">
+<meta property="og:description" content="Semantic markup, CSS styling, layouts, and accessibility.">
+<meta name="theme-color" content="#0b72ff">
+
+  <link rel="stylesheet" href="styles.min.css" />
+
+  <link rel="manifest" href="manifest.json" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <main id="main" class="container">
+    
+<!-- Student -->
+<div class="student-info" role="note" aria-label="Student information">
+  <strong>Ozgur Serin</strong> · Web Dev 1 · Bath Spa University
+</div>
+
+    <article class="sheet flow">
+      <header class="flow center">
+        <h1 class="display green">Our Story</h1>
+        <p class="kicker green">Hit the Ground Running</p>
+      </header>
+
+      <section class="copy flow">
+        <p>Founded in 2030, Machine Gym emerged from the collective passion of a team of tech enthusiasts, fitness aficionados, and AI experts who shared a common goal: to push the boundaries of what's possible in the realm of machine learning. Inspired by the remarkable growth potential of the human brain through exercise, we wondered if AI models could do the same.</p>
+        <p>The concept was simple yet groundbreaking: to train AI models not only through traditional data processing methods, but also by immersing them in the world of physical activity. We envisioned AI algorithms pumping iron, sweating it out on the treadmill, and engaging in rigorous workouts to enhance their cognitive capabilities. Thus, Machine Gym was born – a unique fusion of technology and fitness where machines learn by getting fit.</p>
+      </section>
+
+      <h2 class="section-title green">How Does it Work?</h2>
+      <section class="copy flow">
+        <p>At Machine Gym, we believe in the transformative power of physical fitness not only for humans but also for machines. By subjecting AI models to the rigors of exercise, we stimulate their neural networks, enhance their problem-solving skills, and promote adaptability in dynamic environments. The result? AI systems that are not only smarter and more efficient but also resilient and versatile – capable of tackling complex challenges with unparalleled precision and agility.</p>
+      </section>
+
+      <aside class="callout flow" role="note" aria-label="Did you know">
+        <h3>Did you know?</h3>
+        <p>Our AI models aren't just hitting the weights – they're also mastering dance moves! Rhythm training improves spatial awareness and coordination, making them not only brainy but also surprisingly graceful on the virtual dance floor.</p>
+      </aside>
+
+      <h2 class="section-title green">To the Future</h2>
+      <section class="copy flow">
+        <p>As we continue to push the boundaries of AI innovation, our commitment to excellence remains unwavering. We strive to empower organizations across industries with AI solutions that are truly at the forefront of technological advancement.</p>
+        <p>Join us in our quest to unlock the full potential of artificial intelligence through the power of physical fitness. Welcome to Machine Gym – where intelligence gets fit!</p>
+      </section>
+    </article>
+  </main>
+
+<script>
+(() => {
+  const key = "theme-pref";
+  const root = document.documentElement;
+  const btn = document.querySelector('.theme-toggle');
+  const set = (mode) => {
+    root.dataset.theme = mode;
+    try { localStorage.setItem(key, mode); } catch {}
+    if (btn) btn.setAttribute('aria-pressed', mode === 'dark');
+  };
+  let pref = 'light';
+  try { pref = localStorage.getItem(key) || pref; } catch {}
+  // Respect system if no pref stored
+  if (!localStorage.getItem(key) && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    pref = 'dark';
+  }
+  set(pref);
+  if (btn) {
+    btn.addEventListener('click', () => set(root.dataset.theme === 'dark' ? 'light' : 'dark'));
+  }
+})();
+</script>
+
+<button class="theme-toggle" type="button" aria-pressed="false" aria-label="Toggle theme">
+  <span class="theme-toggle__label">Theme</span>
+</button>
+
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').catch(()=>{});
+  });
+}
+</script>
+
+</body>
+</html>

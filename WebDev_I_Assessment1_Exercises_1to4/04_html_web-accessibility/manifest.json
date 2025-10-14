@@ -1,0 +1,9 @@
+{
+  "name": "Web Dev 1 Exercises",
+  "short_name": "WD1",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0b72ff",
+  "theme_color": "#0b72ff",
+  "icons": []
+}

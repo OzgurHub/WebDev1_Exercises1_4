@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Chocolate chip cookies recipe with clear ingredients and step-by-step instructions." />
+  <title>Cooking with Andy — Chocolate Chip Cookies</title>
+  <link rel="icon" href="data:," />
+  
+<meta property="og:type" content="website">
+<meta property="og:title" content="Course Exercises — Web Dev 1">
+<meta property="og:description" content="Semantic markup, CSS styling, layouts, and accessibility.">
+<meta name="theme-color" content="#0b72ff">
+
+  <link rel="stylesheet" href="styles.min.css" />
+
+  <link rel="manifest" href="manifest.json" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="container cluster">
+      <h1 class="brand">Cooking with Andy</h1>
+      <nav aria-label="Primary" class="primary-nav">
+        <ul class="cluster">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Browse</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container" itemScope itemType="https://schema.org/Recipe">
+    
+<!-- Student -->
+<div class="student-info" role="note" aria-label="Student information">
+  <strong>Ozgur Serin</strong> · Web Dev 1 · Bath Spa University
+</div>
+
+    <article class="pro-card flow">
+      <header class="flow">
+        <h2 itemProp="name">Chocolate Chip Cookies</h2>
+        <p class="lede" itemProp="description">Delicious homemade cookies with gooey chocolate chips!</p>
+      </header>
+
+      <section class="panel flow" aria-labelledby="ing-title">
+        <h3 id="ing-title">Ingredients</h3>
+        <ul class="ingredients grid-2" itemProp="recipeIngredient">
+          <li>2 1/4 cups flour</li>
+          <li>1/2 teaspoon baking soda</li>
+          <li>1 cup unsalted butter, softened</li>
+          <li>1/2 cup granulated sugar</li>
+          <li>1 cup packed brown sugar</li>
+          <li>1 teaspoon vanilla extract</li>
+          <li>2 large eggs</li>
+          <li>2 cups semisweet chocolate chips</li>
+        </ul>
+        <aside class="note" role="note">
+          If you don't have eggs, use a substitute like applesauce, mashed bananas, or yogurt.
+          Use 1/4 cup of the substitute for each egg.
+        </aside>
+      </section>
+
+      <section class="flow" aria-labelledby="steps-title">
+        <h3 id="steps-title">Instructions</h3>
+        <ol class="steps" itemProp="recipeInstructions">
+          <li>Preheat your oven to 190°C.</li>
+          <li>Mix flour and baking soda; set aside.</li>
+          <li>Cream butter, granulated sugar, brown sugar, and vanilla until smooth.</li>
+          <li>Add eggs one at a time, beating well after each addition.</li>
+          <li>Gradually mix in the dry ingredients until combined.</li>
+          <li>Stir in chocolate chips.</li>
+          <li>Scoop rounded tablespoons onto ungreased baking sheets.</li>
+          <li>Bake 8–10 minutes until edges are golden.</li>
+          <li>Cool briefly on sheets, then transfer to racks to cool completely.</li>
+        </ol>
+      </section>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">&copy; 2024 Cooking with Andy</div>
+  </footer>
+
+<script>
+(() => {
+  const key = "theme-pref";
+  const root = document.documentElement;
+  const btn = document.querySelector('.theme-toggle');
+  const set = (mode) => {
+    root.dataset.theme = mode;
+    try { localStorage.setItem(key, mode); } catch {}
+    if (btn) btn.setAttribute('aria-pressed', mode === 'dark');
+  };
+  let pref = 'light';
+  try { pref = localStorage.getItem(key) || pref; } catch {}
+  // Respect system if no pref stored
+  if (!localStorage.getItem(key) && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    pref = 'dark';
+  }
+  set(pref);
+  if (btn) {
+    btn.addEventListener('click', () => set(root.dataset.theme === 'dark' ? 'light' : 'dark'));
+  }
+})();
+</script>
+
+<button class="theme-toggle" type="button" aria-pressed="false" aria-label="Toggle theme">
+  <span class="theme-toggle__label">Theme</span>
+</button>
+
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').catch(()=>{});
+  });
+}
+</script>
+
+</body>
+</html>

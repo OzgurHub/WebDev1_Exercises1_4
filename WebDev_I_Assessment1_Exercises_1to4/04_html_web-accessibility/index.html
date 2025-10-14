@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Wondering Photographer — Gallery</title>
+  <meta name="description" content="Accessible, responsive photo cards with captions and clear controls." />
+  <link rel="icon" href="data:," />
+  
+<meta property="og:type" content="website">
+<meta property="og:title" content="Course Exercises — Web Dev 1">
+<meta property="og:description" content="Semantic markup, CSS styling, layouts, and accessibility.">
+<meta name="theme-color" content="#0b72ff">
+
+  <link rel="stylesheet" href="styles.min.css" />
+
+  <link rel="manifest" href="manifest.json" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <img src="TheDivider.png" width="282" height="53" alt="" class="divider" / srcset="TheDivider.png 1x, TheDivider.png 2x" sizes="(max-width: 720px) 100vw, 50vw">
+    <div class="container bar">
+      <h1 class="site-title">The Wondering Photographer</h1>
+      <a class="cart" href="#" aria-label="Go to checkout">
+        <img src="shopping.svg" width="24" height="24" alt="" aria-hidden="true" / srcset="shopping.svg 1x, shopping.svg 2x" sizes="(max-width: 720px) 100vw, 50vw">
+      </a>
+    </div>
+    <nav class="primary-nav" aria-label="Primary">
+      <ul class="container cluster">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#" aria-current="page">About me</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="container flow">
+    
+<!-- Student -->
+<div class="student-info" role="note" aria-label="Student information">
+  <strong>Ozgur Serin</strong> · Web Dev 1 · Bath Spa University
+</div>
+
+    <section class="cards" aria-labelledby="gallery-title">
+      <h2 id="gallery-title">Latest Prints</h2>
+
+      <article class="card">
+        <figure class="flow">
+          <img src="OceanPhoto.jpg" alt="White rock ledge by a calm blue ocean at sunset; a couple sits on the edge." loading="lazy" decoding="async" / width="600" height="600" srcset="OceanPhoto.jpg 1x, OceanPhoto.jpg 2x" sizes="(max-width: 720px) 100vw, 50vw">
+          <figcaption class="caption">This was from a fabulous trip to the coast of Greenland with my family. The water was lovely – but very cold!</figcaption>
+        </figure>
+        <button type="button" class="btn">Add to basket</button>
+      </article>
+
+      <article class="card">
+        <figure class="flow">
+          <img src="BridgePhoto.jpg" alt="Upward view of the Golden Gate Bridge tower against blue sky." loading="lazy" decoding="async" / width="600" height="600" srcset="BridgePhoto.jpg 1x, BridgePhoto.jpg 2x" sizes="(max-width: 720px) 100vw, 50vw">
+          <figcaption class="caption">A picture of the Golden Gate Bridge. New York! New York!</figcaption>
+        </figure>
+        <button type="button" class="btn">Add to basket</button>
+      </article>
+
+      <article class="card">
+        <figure class="flow">
+          <img src="ValleyPhoto.jpg" alt="Wide valley and ribbon-like river under a cloudy sky." loading="lazy" decoding="async" / width="600" height="600" srcset="ValleyPhoto.jpg 1x, ValleyPhoto.jpg 2x" sizes="(max-width: 720px) 100vw, 50vw">
+          <figcaption class="caption">Another great photo from Greenland. It's a river valley where a glacier used to be.</figcaption>
+        </figure>
+        <button type="button" class="btn">Add to basket</button>
+      </article>
+
+      <article class="card">
+        <figure class="flow">
+          <img src="WaterfallPhoto.jpg" alt="Tall waterfall dropping into a blue pool surrounded by mossy rocks." loading="lazy" decoding="async" / width="600" height="600" srcset="WaterfallPhoto.jpg 1x, WaterfallPhoto.jpg 2x" sizes="(max-width: 720px) 100vw, 50vw">
+          <figcaption class="caption">The waterfall made such a lovely sound. I could have fallen asleep!</figcaption>
+        </figure>
+        <button type="button" class="btn">Add to basket</button>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container split">
+      <p>© 2018 The Wondering Photographer.</p>
+      <ul class="cluster foot-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">About me</a></li>
+      </ul>
+    </div>
+  </footer>
+
+<script>
+(() => {
+  const key = "theme-pref";
+  const root = document.documentElement;
+  const btn = document.querySelector('.theme-toggle');
+  const set = (mode) => {
+    root.dataset.theme = mode;
+    try { localStorage.setItem(key, mode); } catch {}
+    if (btn) btn.setAttribute('aria-pressed', mode === 'dark');
+  };
+  let pref = 'light';
+  try { pref = localStorage.getItem(key) || pref; } catch {}
+  // Respect system if no pref stored
+  if (!localStorage.getItem(key) && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    pref = 'dark';
+  }
+  set(pref);
+  if (btn) {
+    btn.addEventListener('click', () => set(root.dataset.theme === 'dark' ? 'light' : 'dark'));
+  }
+})();
+</script>
+
+<button class="theme-toggle" type="button" aria-pressed="false" aria-label="Toggle theme">
+  <span class="theme-toggle__label">Theme</span>
+</button>
+
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').catch(()=>{});
+  });
+}
+</script>
+
+<script defer src="app.js"></script>
+</body>
+</html>
